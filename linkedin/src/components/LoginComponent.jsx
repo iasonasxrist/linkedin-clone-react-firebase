@@ -1,34 +1,45 @@
 // import React from 'react'
 import { useState } from "react";
 import "../Sass/LoginComponent.scss";
-import { LoginAPI, RegisterAPI } from "../api/AuthAPI";
+import { LoginAPI, RegisterAPI, GoogleSignInAPI } from "../api/AuthAPI";
 import { toast } from "react-toastify";
+import GoogleButton from "react-google-button";
+import { useNavigate } from "react-router-dom";
 
 const LoginComponent = () => {
   const [credentials, setCredentials] = useState({});
-
+  let navigate = useNavigate();
   const login = async () => {
     try {
       // Add toast pop up messages
       const resp = await LoginAPI(credentials.email, credentials.password);
+      toast.success("Signed In to LinkedIn");
       console.log(resp?.user);
     } catch (err) {
       console.log(err);
+      toast.error("Please Check your Credentials");
     }
   };
 
-  // const forgotpass = asyn () =>{
+  // const forgotPass = asyn () =>{
   //   try{
-  //     const resp  = await 
+  //     const resp  = await
   //   }
   // }
+
+  const googleSignInProvider = async () => {
+    let response = await GoogleSignInAPI();
+    console.log(response);
+  };
 
   return (
     <>
       <div className="login-wrapper">
         <img
-          // Add image
+          //TODO Add image
           src={"/linkedin/public/Linkedin-Logi.png"}
+          height={"200px"}
+          width={"200px"}
           className="linkedinlogo"
         />
 
@@ -59,11 +70,28 @@ const LoginComponent = () => {
 
             {/* TODO Add forgot password button  */}
           </div>
+          
           {/* TODO id="text-color:white;" */}
           <button onClick={login} className="login-btn">
             Log in to Linkedin
           </button>
-          <button onClick={forgotPass} className="login-btn"> Forgot password</button>
+
+          {/* <button onClick={""} className="login-btn">
+            {" "}
+            Forgot password
+          </button> */}
+        </div>
+
+        <hr className="hr-text" data-content="or" />
+        <div className="google-btn-container">
+          <GoogleButton className="google-btn" onClick={googleSignInProvider} />
+
+          <p className="go-to-signup">
+            New to LinkedIn?
+            <span className="join-now" onClick={() => navigate("/register")}>
+              Join now
+            </span>
+          </p>
         </div>
 
         {/* Addd sign in with google and Apple */}
@@ -71,6 +99,5 @@ const LoginComponent = () => {
     </>
   );
 };
-
 
 export default LoginComponent;
