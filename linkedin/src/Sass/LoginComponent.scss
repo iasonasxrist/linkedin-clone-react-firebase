@@ -56,10 +56,10 @@ body {
 
 .linkedinLogo {
   width: 80px;
-  // position
-  // top
-  // left
-}
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+ }
 
 .hr-text {
   line-height: 1em;
@@ -73,6 +73,7 @@ body {
   &:before {
     content: "";
     // use the linear-gradient for the fading effect
+    
     // use a solid background color for a solid bar
     background: linear-gradient(to right, transparent, #818078, transparent);
     position: absolute;

@@ -17,12 +17,18 @@ const LoginComponent = () => {
     }
   };
 
+  // const forgotpass = asyn () =>{
+  //   try{
+  //     const resp  = await 
+  //   }
+  // }
+
   return (
     <>
       <div className="login-wrapper">
         <img
           // Add image
-          src={""}
+          src={"/linkedin/public/Linkedin-Logi.png"}
           className="linkedinlogo"
         />
 
@@ -57,6 +63,7 @@ const LoginComponent = () => {
           <button onClick={login} className="login-btn">
             Log in to Linkedin
           </button>
+          <button onClick={forgotPass} className="login-btn"> Forgot password</button>
         </div>
 
         {/* Addd sign in with google and Apple */}
@@ -64,5 +71,6 @@ const LoginComponent = () => {
     </>
   );
 };
+
 
 export default LoginComponent;
