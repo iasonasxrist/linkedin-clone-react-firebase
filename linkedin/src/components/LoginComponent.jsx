@@ -9,7 +9,9 @@ import { useNavigate } from "react-router-dom";
 
 const LoginComponent = () => {
   const [credentials, setCredentials] = useState({});
+
   let navigate = useNavigate();
+  
   const login = async () => {
     try {
       // Add toast pop up messages

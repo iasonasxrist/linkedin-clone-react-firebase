@@ -12,4 +12,9 @@ export const router = createBrowserRouter([
     path: "/register",
     element: <Register />,
   },
+
+  {
+    path: "/home",
+    element: <Home />,
+  }
 ]);
