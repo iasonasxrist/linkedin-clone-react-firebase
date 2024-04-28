@@ -1,7 +1,7 @@
 // import React from 'react'
 import { useState } from "react";
 import "../Sass/LoginComponent.scss";
-import { LoginAPI, RegisterAPI, GoogleSignInAPI } from "../api/AuthAPI";
+import { LoginAPI, GoogleSignInAPI } from "../api/AuthAPI";
 import LinkedinLogo from "../assets/Linkedin-Logo.png"
 import { toast } from "react-toastify";
 import GoogleButton from "react-google-button";
