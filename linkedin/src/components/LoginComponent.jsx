@@ -2,6 +2,7 @@
 import { useState } from "react";
 import "../Sass/LoginComponent.scss";
 import { LoginAPI, RegisterAPI, GoogleSignInAPI } from "../api/AuthAPI";
+import LinkedinLogo from "../assets/Linkedin-Logo.png"
 import { toast } from "react-toastify";
 import GoogleButton from "react-google-button";
 import { useNavigate } from "react-router-dom";
@@ -36,11 +37,8 @@ const LoginComponent = () => {
     <>
       <div className="login-wrapper">
         <img
-          //TODO Add image
-          src={"/linkedin/public/Linkedin-Logi.png"}
-          height={"200px"}
-          width={"200px"}
-          className="linkedinlogo"
+          src={LinkedinLogo}
+          className="linkedinLogo"
         />
 
         <div className="login-wrapper-inner">
@@ -70,7 +68,7 @@ const LoginComponent = () => {
 
             {/* TODO Add forgot password button  */}
           </div>
-          
+
           {/* TODO id="text-color:white;" */}
           <button onClick={login} className="login-btn">
             Log in to Linkedin
