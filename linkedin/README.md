@@ -1,56 +1,70 @@
-# LinkedIn Clone with Firebase Authentication
+# Getting Started with Create React App
 
-![LinkedIn Logo](linkedin_logo.png) ![Firebase Logo](firebase_logo.png) ![React Logo](react_logo.png) ![Sass Logo](sass_logo.png)
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Overview
+## Available Scripts
 
-This project is a clone of LinkedIn, a professional networking platform, built using React for the frontend, Firebase for authentication, and Sass for styling.
+In the project directory, you can run:
 
-## Features
+### `npm start`
 
-- **User Authentication:** Users can sign up, log in, and log out securely using Firebase authentication.
-- **Profile Creation:** Users can create and customize their profiles, including adding personal details, education, work experience, and skills.
-- **News Feed:** Users can view and interact with a feed of posts from other users, similar to LinkedIn's news feed.
-- **Messaging:** Users can connect with other users through direct messaging.
-- **Search Functionality:** Users can search for other users, companies, jobs, and content.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## Technologies Used
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-- **React:** A JavaScript library for building user interfaces.
-- **Firebase:** A platform provided by Google for building web and mobile applications without server-side programming.
-- **Sass:** A CSS preprocessor that adds power and elegance to the basic CSS syntax.
+### `npm test`
 
-## Getting Started
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-To run this project locally:
+### `npm run build`
 
-1. Clone this repository:
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-   ```bash
-   git clone https://github.com/your-username/linkedin-clone.git
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-   cd linkedin-clone
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-   npm install
-   
-Set up Firebase:
+### `npm run eject`
 
-Create a Firebase project on the Firebase Console (https://console.firebase.google.com/).
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-Enable Authentication with email/password in the Firebase Authentication section.
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Obtain your Firebase config object.
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-Create .env file in the root directory and add your Firebase config:
-  
-    REACT_APP_FIREBASE_API_KEY=your-api-key
-    REACT_APP_FIREBASE_AUTH_DOMAIN=your-auth-domain
-    REACT_APP_FIREBASE_PROJECT_ID=your-project-id
-    REACT_APP_FIREBASE_STORAGE_BUCKET=your-storage-bucket
-    REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your-messaging-sender-id
-    REACT_APP_FIREBASE_APP_ID=your-app-id
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-Run the project:
+## Learn More
 
-    npm start
-Open your browser and go to http://localhost:3000 to view the app.
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -40,6 +40,7 @@ const LoginComponent = () => {
       <div className="login-wrapper">
         <img
           src={LinkedinLogo}
+          alt="logo"
           className="linkedinLogo"
         />
 
