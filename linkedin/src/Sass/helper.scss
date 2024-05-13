@@ -1,0 +1,11 @@
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  flex-direction: column;
+  gap: 20px;
+  font-family: system-ui;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.9);
+}
