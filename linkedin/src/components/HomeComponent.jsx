@@ -1,9 +1,13 @@
 import React from "react";
+import PostStatus from "../components/styles/PostUpdate";
 
 const HomeComponent = () => {
   return (
     // TOPBAR
-    <div>HomeComponent</div>
+    <>
+      <PostStatus />
+      <div className="home-component">HomeComponent</div>
+    </>
   );
 };
 
