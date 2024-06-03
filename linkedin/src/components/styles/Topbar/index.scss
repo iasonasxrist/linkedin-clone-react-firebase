@@ -4,17 +4,21 @@
     background-color: rgba(255, 255, 255, 0.87);
     display: flex;
     align-items: center;
+    justify-content: space-between;
   }
   .linkedin-logo {
     width: 65px;
     margin-left: 20px;
+    padding-top: 0px;
   }
   .react-icons {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 55%;
-    margin-left: 30px;
+    width: 30%;
+    margin-left: 100px;
+
+
   }
   
   .react-icon {
@@ -39,7 +43,7 @@
   .popup-position {
     position: absolute;
     right: 10px;
-    top: 65px;
+    top: 65px;     
     z-index: 99;
   }
   
