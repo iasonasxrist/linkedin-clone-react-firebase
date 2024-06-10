@@ -3,6 +3,8 @@ import { Button, Modal, Progress } from "antd";
 import { AiOutlinePicture } from "react-icons/ai";
 import ReactQuill from "react-quill";
 import "./index.scss";
+import 'react-quill/dist/quill.snow.css';
+import {uploadImage } from "../../../api/ImageUpload";
 
 export const ModalComponent = ({
     modalOpen,
@@ -12,11 +14,11 @@ export const ModalComponent = ({
     status,
     isEdit,
     updateStatus,
-    // uploadPostImage,
-    // setPostImage,
-    // postImage,
-    // currentPost,
-    // setCurrentPost,
+    uploadPostImage,
+    setPostImage,
+    postImage,
+    currentPost,
+    setCurrentPost,
 }) => {
   const [progress, setProgress] = useState(0);
   return (
@@ -50,9 +52,7 @@ export const ModalComponent = ({
             theme="snow"
             value={status}
             placeholder="Share Something Useful.."
-            onChange={(event) => {
-              setStatus(event.target.value);
-            }}
+            onChange={setStatus}
           />
           {progress === 0 || progress === 100 ? (
             <></>
@@ -61,25 +61,29 @@ export const ModalComponent = ({
               <Progress type="circle" percent={progress} />
             </div>
           )}
-          {/* {postImage?.length > 0 || currentPost?.postImage?.length ? ( */}
-          {/* <img
+           {postImage?.length > 0 || currentPost?.postImage?.length ? ( 
+           <img
             className="preview-image"
             src={postImage || currentPost?.postImage}
             alt="postImage"
-          /> */}
+          /> ) : (
+              <></>
+           )}
         </div>
 
-        <label for="pic-upload">
-          <AiOutlinePicture size={35} className="picture-icon" />
-        </label>
-        <input
-          id="pic-upload"
-          type={"file"}
-          hidden
-          onChange={(event) => {
-            console.log(event);
-          }}
-        />
+          <label>
+              <AiOutlinePicture size={35} className="picture-icon"/>
+              <input
+                  id="pic-upload"
+                  type={"file"}
+                  hidden
+                  onChange={(event) => {
+                      uploadImage(event.target.files[0], setPostImage, setProgress)
+                  }
+                  }
+              />
+          </label>
+
       </Modal>
     </>
   );

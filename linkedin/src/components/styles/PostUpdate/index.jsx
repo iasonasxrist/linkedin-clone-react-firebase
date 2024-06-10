@@ -14,10 +14,21 @@ const PostStatus = () => {
   const [postImage, setPostImage] = useState("");
 
   const sendStatus = async (status) => {
+    
+    // let object ={
+    //   status: status,
+    //   timeStamp : getCurrentTimeStamp("LLL"),
+    //   userEmail: currentUser.email,
+    //   postID: getUniqueId(),
+    //   userID: currentUser.id,
+    //   postImage : postImage
+    // }
     await postStatus(status);
     await setModalOpen(false);
     await setStatus("");
   };
+  
+  
 
   // caches all data from posts
   useMemo(() => {
@@ -45,12 +56,12 @@ const PostStatus = () => {
         </div>
       </div>
 
-      <ModalComponent
+      <ModalComponent 
+          status={status}
         setStatus={setStatus}
+        sendStatus={sendStatus}
         modalOpen={modalOpen}
         setModalOpen={setModalOpen}
-        status={status}
-        sendStatus={sendStatus}
         isEdit={isEdit}
         // updateStatus={updateStatus}
         // uploadPostImage={uploadPostImage}
