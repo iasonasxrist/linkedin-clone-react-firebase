@@ -3,40 +3,41 @@ import { ModalComponent } from "../../common/Modal";
 import { useState } from "react";
 import { getStatus, postStatus } from "../../../api/FirestoreAPI";
 import PostsCard from "../../common/PostsCard";
+import { getCurrentTimeStamp } from "../../../helper/useMoment";
 import "./index.scss";
 
 const PostStatus = () => {
+  let userEmail = localStorage.getItem("userEmail");
+
   const [modalOpen, setModalOpen] = useState(false);
   const [status, setStatus] = useState("");
-  const [allStatuses, setAllStatus] = useState([]);
+  const [allStatus, setAllStatus] = useState([]);
   const [currentPost, setCurrentPost] = useState({});
   const [isEdit, setIsEdit] = useState(false);
   const [postImage, setPostImage] = useState("");
 
-  const sendStatus = async (status) => {
-    
-    // let object ={
-    //   status: status,
-    //   timeStamp : getCurrentTimeStamp("LLL"),
-    //   userEmail: currentUser.email,
-    //   postID: getUniqueId(),
-    //   userID: currentUser.id,
-    //   postImage : postImage
-    // }
-    await postStatus(status);
+  const sendStatus = async () => {
+    let object = {
+      status: status,
+      timeStamp: getCurrentTimeStamp("LLL"),
+      // postImage: postImage,
+      userEmail: userEmail,
+      // postID: getUniqueId(),
+      // userID: currentUser.id,
+    };
+
+    await postStatus(object);
     await setModalOpen(false);
     await setStatus("");
   };
-  
-  
 
   // caches all data from posts
   useMemo(() => {
     getStatus(setAllStatus);
   }, []);
 
-  console.log(allStatuses);
-
+  console.log("my status", allStatus);
+  console.log("0", status);
   return (
     <>
       <div className="post-status-main">
@@ -56,8 +57,8 @@ const PostStatus = () => {
         </div>
       </div>
 
-      <ModalComponent 
-          status={status}
+      <ModalComponent
+        status={status}
         setStatus={setStatus}
         sendStatus={sendStatus}
         modalOpen={modalOpen}
@@ -71,8 +72,12 @@ const PostStatus = () => {
         currentPost={currentPost}
       />
 
-      {allStatuses.map((posts) => {
-        return <PostsCard id={posts.id} posts={posts} />;
+      {allStatus.map((post) => {
+        return (
+          <div key={post.id}>
+            <PostsCard posts={post} />
+          </div>
+        );
       })}
     </>
   );
