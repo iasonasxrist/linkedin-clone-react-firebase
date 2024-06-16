@@ -10,7 +10,7 @@ import { auth } from "../firebaseConfig";
 export const LoginAPI = (email, password) => {
   try {
     let response = signInWithEmailAndPassword(auth, email, password);
-    console.log(response);
+    return response;
   } catch (err) {
     return err;
   }
@@ -41,4 +41,4 @@ export const onLogout = () => {
   } catch (err) {
     return err;
   }
-}
+};
