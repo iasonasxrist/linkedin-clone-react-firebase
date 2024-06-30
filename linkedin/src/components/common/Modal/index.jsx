@@ -6,19 +6,19 @@ import "./index.scss";
 import "react-quill/dist/quill.snow.css";
 import { uploadImage } from "../../../api/ImageUpload";
 
-export const ModalComponent = ({
-    modalOpen,
-    setModalOpen,
-    sendStatus,
-    setStatus,
-    status,
-    isEdit,
-    updateStatus,
-    uploadPostImage,
-    setPostImage,
-    postImage,
-    currentPost,
-    setCurrentPost,
+const ModalComponent = ({
+  modalOpen,
+  setModalOpen,
+  sendStatus,
+  setStatus,
+  status,
+  isEdit,
+  updateStatus,
+  uploadImage,
+  setPostImage,
+  postImage,
+  currentPost,
+  setCurrentPost,
 }) => {
   const [progress, setProgress] = useState(0);
   return (
@@ -31,11 +31,13 @@ export const ModalComponent = ({
           setStatus("");
           setModalOpen(false);
           setPostImage("");
+          setCurrentPost({});
         }}
         onCancel={() => {
           setStatus("");
           setModalOpen(false);
           setPostImage("");
+          setCurrentPost({});
         }}
         footer={[
           <Button
@@ -73,19 +75,20 @@ export const ModalComponent = ({
             <></>
           )}
         </div>
-
-        <label>
+        <label for="pic-upload">
           <AiOutlinePicture size={35} className="picture-icon" />
         </label>
         <input
           id="pic-upload"
           type={"file"}
           hidden
-          onChange={(event) => {
-            uploadImage(event.target.files[0], setPostImage, setProgress);
-          }}
+          onChange={(event) =>
+            uploadImage(event.target.files[0], setPostImage, setProgress)
+          }
         />
       </Modal>
     </>
   );
 };
+
+export default ModalComponent;
