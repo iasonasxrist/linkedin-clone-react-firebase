@@ -8,9 +8,11 @@ import "./index.scss";
 export default function ProfilePopup() {
   let navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState({});
+  
   useMemo(() => {
     getCurrentUser(setCurrentUser);
   }, []);
+
   return (
     <div className="popup-card">
       <p className="name">{currentUser?.name}</p>

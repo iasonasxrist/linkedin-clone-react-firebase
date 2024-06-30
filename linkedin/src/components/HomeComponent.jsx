@@ -1,15 +1,11 @@
 import React from "react";
-import PostStatus from "../components/styles/PostUpdate";
-import Topbar from "../components/styles/Topbar";
-const HomeComponent = () => {
-  return (
-    
-    <>
-      <Topbar/>
-      <PostStatus />      
-      <div className="home-component">HomeComponent</div>
-    </>
-  );
-};
+import PostStatus from "../components/common/PostUpdate";
 
-export default HomeComponent;
+
+export default function HomeComponent({ currentUser }) {
+  return (
+    <div className="home-component">
+      <PostStatus currentUser={currentUser} />
+    </div>
+  );
+}

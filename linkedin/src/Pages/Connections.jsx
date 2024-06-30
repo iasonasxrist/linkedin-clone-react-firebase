@@ -1,24 +1,25 @@
-import HomeComponent from "../components/HomeComponent";
+import React, { useEffect, useState } from "react";
+import ConnectionsComponent from "../components/ConnectionsComponent";
 import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebaseConfig";
-import { useEffect, useState } from "react";
-import Loader from "../helper/Loader";
+import Loader from "../components/common/Loader";
 
-export default function Home({ currentUser }) {
-  let navigate = useNavigate();
+export default function Connections({ currentUser }) {
   const [loading, setLoading] = useState(true);
-
+  let navigate = useNavigate();
   useEffect(() => {
     onAuthStateChanged(auth, (res) => {
       if (!res?.accessToken) {
-        console.log(res?.accessToken);
         navigate("/");
       } else {
         setLoading(false);
       }
     });
   }, []);
-
-  return loading ? <Loader /> : <HomeComponent currentUser={currentUser} />;
+  return loading ? (
+    <Loader />
+  ) : (
+    <ConnectionsComponent currentUser={currentUser} />
+  );
 }

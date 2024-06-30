@@ -10,7 +10,7 @@ import { auth } from "../firebaseConfig";
 export const LoginAPI = (email, password) => {
   try {
     let response = signInWithEmailAndPassword(auth, email, password);
-    console.log(response);
+    return response;
   } catch (err) {
     return err;
   }
@@ -19,7 +19,7 @@ export const LoginAPI = (email, password) => {
 export const RegisterAPI = (email, password) => {
   try {
     let response = createUserWithEmailAndPassword(auth, email, password);
-    console.log(response);
+    return response;
   } catch (err) {
     return err;
   }
@@ -29,7 +29,7 @@ export const GoogleSignInAPI = () => {
   try {
     let googleProvider = new GoogleAuthProvider();
     let res = signInWithPopup(auth, googleProvider);
-    console.log(res);
+    return res;
   } catch (err) {
     return err;
   }
@@ -41,4 +41,4 @@ export const onLogout = () => {
   } catch (err) {
     return err;
   }
-}
+};

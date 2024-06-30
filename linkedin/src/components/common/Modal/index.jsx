@@ -3,20 +3,22 @@ import { Button, Modal, Progress } from "antd";
 import { AiOutlinePicture } from "react-icons/ai";
 import ReactQuill from "react-quill";
 import "./index.scss";
+import "react-quill/dist/quill.snow.css";
+import { uploadImage } from "../../../api/ImageUpload";
 
-export const ModalComponent = ({
-    modalOpen,
-    setModalOpen,
-    sendStatus,
-    setStatus,
-    status,
-    isEdit,
-    updateStatus,
-    // uploadPostImage,
-    // setPostImage,
-    // postImage,
-    // currentPost,
-    // setCurrentPost,
+const ModalComponent = ({
+  modalOpen,
+  setModalOpen,
+  sendStatus,
+  setStatus,
+  status,
+  isEdit,
+  updateStatus,
+  uploadImage,
+  setPostImage,
+  postImage,
+  currentPost,
+  setCurrentPost,
 }) => {
   const [progress, setProgress] = useState(0);
   return (
@@ -26,19 +28,23 @@ export const ModalComponent = ({
         centered
         open={modalOpen}
         onOk={() => {
+          setStatus("");
           setModalOpen(false);
-          setStatus("")
+          setPostImage("");
+          setCurrentPost({});
         }}
         onCancel={() => {
+          setStatus("");
           setModalOpen(false);
-          setStatus("")
+          setPostImage("");
+          setCurrentPost({});
         }}
         footer={[
           <Button
             onClick={isEdit ? updateStatus : sendStatus}
             key="submit"
             type="primary"
-            // disabled={status.length > 0 ? false : true}
+            disabled={status.length > 0 ? false : true}
           >
             {isEdit ? "Update" : "Post"}
           </Button>,
@@ -50,9 +56,7 @@ export const ModalComponent = ({
             theme="snow"
             value={status}
             placeholder="Share Something Useful.."
-            onChange={(event) => {
-              setStatus(event.target.value);
-            }}
+            onChange={setStatus}
           />
           {progress === 0 || progress === 100 ? (
             <></>
@@ -61,14 +65,16 @@ export const ModalComponent = ({
               <Progress type="circle" percent={progress} />
             </div>
           )}
-          {/* {postImage?.length > 0 || currentPost?.postImage?.length ? ( */}
-          {/* <img
-            className="preview-image"
-            src={postImage || currentPost?.postImage}
-            alt="postImage"
-          /> */}
+          {postImage?.length > 0 || currentPost?.postImage?.length ? (
+            <img
+              className="preview-image"
+              src={postImage || currentPost?.postImage}
+              alt="postImage"
+            />
+          ) : (
+            <></>
+          )}
         </div>
-
         <label for="pic-upload">
           <AiOutlinePicture size={35} className="picture-icon" />
         </label>
@@ -76,11 +82,13 @@ export const ModalComponent = ({
           id="pic-upload"
           type={"file"}
           hidden
-          onChange={(event) => {
-            console.log(event);
-          }}
+          onChange={(event) =>
+            uploadImage(event.target.files[0], setPostImage, setProgress)
+          }
         />
       </Modal>
     </>
   );
 };
+
+export default ModalComponent;

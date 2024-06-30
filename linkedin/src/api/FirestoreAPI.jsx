@@ -29,7 +29,6 @@ export const postStatus = (object) => {
       console.log(err);
     });
 };
-
 export const getStatus = (setAllStatus) => {
   const q = query(postsRef, orderBy("timeStamp"));
   onSnapshot(q, (response) => {
