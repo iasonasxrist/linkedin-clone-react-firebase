@@ -16,6 +16,7 @@ export default function LikeButton({ userId, postId, currentUser }) {
   const [liked, setLiked] = useState(false);
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
+  
   const handleLike = () => {
     likePost(userId, postId, liked);
   };

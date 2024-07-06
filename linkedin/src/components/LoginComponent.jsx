@@ -26,7 +26,8 @@ const LoginComponent = () => {
 
   const googleSignInProvider = async () => {
     let response = await GoogleSignInAPI();
-    console.log(response);
+    localStorage.setItem("userEmail", response?.user?.email);
+    // console.log(response);
   };
 
   return (
@@ -67,10 +68,10 @@ const LoginComponent = () => {
             Log in to Linkedin
           </button>
 
-          {/* <button onClick={""} className="login-btn">
+          <button onClick={""} className="login-btn">
             {" "}
             Forgot password
-          </button> */}
+          </button>
         </div>
 
         <hr className="hr-text" data-content="or" />
