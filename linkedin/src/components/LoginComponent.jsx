@@ -2,7 +2,7 @@
 import { useState } from "react";
 import "../Sass/LoginComponent.scss";
 import { LoginAPI, GoogleSignInAPI } from "../api/AuthAPI";
-import LinkedinLogo from "../assets/Linkedin-Logo.png"
+import LinkedinLogo from "../assets/Linkedin-Logo.png";
 import { toast } from "react-toastify";
 import GoogleButton from "react-google-button";
 import { useNavigate } from "react-router-dom";
@@ -11,38 +11,29 @@ const LoginComponent = () => {
   const [credentials, setCredentials] = useState({});
 
   let navigate = useNavigate();
-  
+
   const login = async () => {
     try {
-      // Add toast pop up messages
       const resp = await LoginAPI(credentials.email, credentials.password);
       toast.success("Signed In to LinkedIn");
-      console.log(resp?.user);
+      localStorage.setItem("userEmail", resp.user.email);
+      // console.log(resp?.user);
     } catch (err) {
       console.log(err);
       toast.error("Please Check your Credentials");
     }
   };
 
-  // const forgotPass = asyn () =>{
-  //   try{
-  //     const resp  = await
-  //   }
-  // }
-
   const googleSignInProvider = async () => {
     let response = await GoogleSignInAPI();
-    console.log(response);
+    localStorage.setItem("userEmail", response?.user?.email);
+    // console.log(response);
   };
 
   return (
     <>
       <div className="login-wrapper">
-        <img
-          src={LinkedinLogo}
-          alt="logo"
-          className="linkedinLogo"
-        />
+        <img src={LinkedinLogo} alt="logo" className="linkedinLogo" />
 
         <div className="login-wrapper-inner">
           <h1 className="heading">Sign in</h1>
@@ -77,10 +68,10 @@ const LoginComponent = () => {
             Log in to Linkedin
           </button>
 
-          {/* <button onClick={""} className="login-btn">
+          <button onClick={""} className="login-btn">
             {" "}
             Forgot password
-          </button> */}
+          </button>
         </div>
 
         <hr className="hr-text" data-content="or" />
