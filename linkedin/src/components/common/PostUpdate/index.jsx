@@ -8,6 +8,7 @@ import PostsCard from "../PostsCard";
 import "./index.scss";
 
 export default function PostStatus({ currentUser }) {
+  let userEmail = localStorage.getItem("userEmail");
   const [modalOpen, setModalOpen] = useState(false);
   const [status, setStatus] = useState("");
   const [allStatuses, setAllStatus] = useState([]);
@@ -19,7 +20,7 @@ export default function PostStatus({ currentUser }) {
     let object = {
       status: status,
       timeStamp: getCurrentTimeStamp("LLL"),
-      userEmail: currentUser.email,
+      userEmail: userEmail,
       userName: currentUser.name,
       postID: getUniqueID(),
       userID: currentUser.id,
