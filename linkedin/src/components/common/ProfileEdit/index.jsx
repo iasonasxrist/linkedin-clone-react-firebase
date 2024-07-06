@@ -93,14 +93,6 @@ export const ProfileEdit = ({ onEdit, currentUser }) => {
           placeholder="Please update your website"
           className="common-input"
         />
-        
-        
-        
-        
-        
-        
-        
-        
       </div>
       <div className="save-container">
         <button className="save-btn" onClick={updateProfileData}>
